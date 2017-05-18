@@ -3,6 +3,14 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import axios from 'axios'
+import API from './API'
+
+axios.defaults.baseURL = 'http://127.0.0.1:8000';
+// axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
+
+window.axios = axios
+window.API = API
 
 Vue.config.productionTip = false
 

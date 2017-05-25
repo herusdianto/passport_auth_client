@@ -8,6 +8,10 @@
                     <router-link :to="{ name: 'Register' }" class="btn btn-default">
                         Register
                     </router-link>
+
+                    <router-link :to="{ name: 'Login' }" class="btn btn-default">
+                        Login
+                    </router-link>
                 </div>
             </div>
         </div>

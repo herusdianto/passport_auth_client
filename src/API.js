@@ -1,7 +1,7 @@
 class API {
 
-    static register = '/api/register'
-    static login = '/oauth/token'
+  static register = '/api/register'
+  static login = '/oauth/token'
 
 }
 

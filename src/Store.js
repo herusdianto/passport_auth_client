@@ -23,8 +23,6 @@ const Store = new Vuex.Store({
   actions: {
     login(context, user) {
       return new Promise((resolve, reject) => {
-        console.log('user', user)
-
         let data = {
           client_id: 2,
           client_secret: 'dOjwKuRQ9DZBSfqVgaIOv5jIWagzQ3iNJj73lTCz',
@@ -53,7 +51,6 @@ const Store = new Vuex.Store({
 
   mutations: {
     updateTokens(state, tokens) {
-      console.log('tokens', tokens)
       state.tokens = tokens
     },
   }

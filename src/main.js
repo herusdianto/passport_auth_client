@@ -8,7 +8,11 @@ import API from './API'
 import Store from './Store'
 
 axios.defaults.baseURL = 'http://127.0.0.1:8000';
-// axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
+
+let access_token = Store.getters.getAccessToken
+
+if (access_token)
+  axios.defaults.headers.common['Authorization'] = `Bearer ${access_token}`;
 
 window.axios = axios
 window.API = API

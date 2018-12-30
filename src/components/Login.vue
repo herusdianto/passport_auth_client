@@ -51,7 +51,9 @@
       login(user) {
         Store.dispatch('login', user)
           .then(response => {
-            console.log('response from success login', response)
+            Store.dispatch('getCurrentUser')
+
+            this.$router.push('/profile')
           })
           .catch(response => {
             let errorMessage = response.response.data.message

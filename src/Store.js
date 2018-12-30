@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import createPersistedState from 'vuex-persistedstate'
+import axios from "axios";
 
 Vue.use(Vuex)
 
@@ -40,20 +41,49 @@ const Store = new Vuex.Store({
 
             context.commit('updateTokens', responseData)
 
+            axios.defaults.headers.common['Authorization'] = `Bearer ${responseData.access_token}`;
+
             resolve(response)
           })
           .catch(response => {
             reject(response)
           })
       })
-    }
+    },
+    getCurrentUser(context) {
+      return new Promise((resolve, reject) => {
+        axios.get(API.user)
+          .then(response => {
+            let responseData = response.data
+
+            context.commit('updateCurrentUser', responseData)
+
+            resolve(response)
+          })
+          .catch(response => {
+            reject(response)
+          })
+      })
+    },
   },
 
   mutations: {
     updateTokens(state, tokens) {
       state.tokens = tokens
     },
-  }
+    updateCurrentUser(state, currentUser) {
+      state.currentUser = currentUser
+    },
+  },
+
+  getters: {
+    getAccessToken(state) {
+      return state.tokens.access_token
+    },
+    getCurrentUser(state) {
+      return state.currentUser
+    },
+  },
 
 })
 

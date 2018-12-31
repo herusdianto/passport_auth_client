@@ -52,11 +52,16 @@
         Store.dispatch('login', user)
           .then(response => {
             Store.dispatch('getCurrentUser')
+              .then(resp => {
+                this.$router.push('/profile')
+              })
+              .catch(err => {
 
-            this.$router.push('/profile')
+              })
+
           })
-          .catch(response => {
-            let errorMessage = response.response.data.message
+          .catch(error => {
+            let errorMessage = error.response.data.message
 
             alert(errorMessage)
           })
